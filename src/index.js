@@ -2,9 +2,7 @@
 const practice1 = () => {
     console.log('Practice 1 result: ');
     for(var i = 0; i < 7; i++) {
-        setTimeout(() => {
-            console.log(i);
-        }, 1000);
+        console.log(i + 1);
     }
 };
 
@@ -14,12 +12,13 @@ const practice2 = () => {
     
     const search = (arrToSearch, value) => {
         for(var i = 0; i < arrToSearch.length; i++) {
-            if (value == arrToSearch[i]) return true;
-            return false;
+            if (String(value.toLowerCase()) == String(arrToSearch[i].toLowerCase())) return true;
+            //return false;       
         }
+        return false;
     };
 
-    console.log('Practice 2 result: ', search(arr, 'sevilla')); //it'd printed false but must be true 
+    console.log('Practice 2 result: ', search(arr, 'Sevilla')); //it'd printed false but must be true 
 };
 
 // we'd like to remove all null values in our array. But it is not working on
@@ -28,7 +27,8 @@ const practice3 = () => {
 
     const removeNullValues = (sourceArr) => {
         for(var i = 0; i < sourceArr.length; i++) {
-            if (typeof sourceArr[i] === 'null') {
+
+            if (sourceArr[i] === null) {
                 delete sourceArr[i];
             }
         }
@@ -58,7 +58,7 @@ const practice4 = () => {
         }
     });
 
-    const result = Object.assign(createProto2('Barbara', 'Liskov'), proto1);
+    const result = Object.assign(Object.create(createProto2['Barbara', 'Liskov'], proto1));
 
     console.log('Practice4 result: ', result.toString()); //oops ! where has Barbara Liskov gone?
 };
